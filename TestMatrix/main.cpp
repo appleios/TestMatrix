@@ -239,7 +239,7 @@ int main(int argc, const char * argv[])
     return 0;
 }
 
-int check_f1_fits_points(const int *f1, const int k[3]);
+int check_f1_fits_points(const int *f1, int k[3]);
 
 int test_function(const int f1[3], int k_out[3])
 {
@@ -264,25 +264,36 @@ int test_function(const int f1[3], int k_out[3])
     return 0;
 }
 
-int check_f1_fits_points(const int *f1, const int k[3])
+#ifdef MINIMIZE_POINT_COUNT
+int check_if_can_finish(const int *A);
+#endif
+
+int check_f1_fits_points(const int *f1, int k[3])
 {
     int A[K3] = {0};
     int s = 0;
-    for (int i=0; i<3; i++) {
+    for (int i = 0; i<3; i++) {
         int x1 = X1(k[i]), x2 = X2(k[i]);
         int y1 = (f1[0] * x1 + f1[1] * x2 + f1[2]) % K;
         int y = m[x1][x2];
         if (y1 == y) {
             s++;
             fulfill_row_with_f1_x1x2(A, f1, y, x1, x2);
+
+#ifdef MINIMIZE_POINT_COUNT
+            if (check_if_can_finish(A)) {
+                for (int t = i + 1; t < 3; t++) {
+                    k[t] = -1;
+                }
+            }
+#endif
         }
     }
 
     if (s > 0) {
         int fits = 1;
         for (int j = 0; j < K3; j++) {
-            int y = A[j];
-            if (y == 0) {
+            if (A[j] != 1) {
                 fits = 0;
                 break;
             }
@@ -291,6 +302,19 @@ int check_f1_fits_points(const int *f1, const int k[3])
     }
     return -1;
 }
+
+#ifdef MINIMIZE_POINT_COUNT
+int check_if_can_finish(const int *A)
+{
+    int j;
+    for (j = 0; j < K3; j++) {
+        if (A[j] != 1) {
+            break;
+        }
+    }
+    return j == K3;
+}
+#endif
 
 void fulfill_row_with_f1_x1x2(int A[K3], const int *f1, int y, int x1, int x2)
 {
