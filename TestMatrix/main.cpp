@@ -191,59 +191,204 @@ int m22[22][22] = {
     { 18, 17, 1, 1, 16, 21, 7, 8, 16, 4, 10, 3, 14, 10, 19, 8, 4, 21, 4, 12, 3, 9},
 };
 
-#define K 9
-#define m m9
+#define K 18
+#define m m18
 #define K2 (K*K)
 #define K3 (K2*K)
 
 static inline int X1(int k) { return k / K; }
 static inline int X2(int k) { return k % K; }
 
-void fulfill_row_with_f1_x1x2(int A[K3], const int *f1, int y, int x1, int x2);
-int test_function(const int f1[3], int k_out[3]);
 
 int main(int argc, const char * argv[])
 {
     int f1[3];
-    int fail_count = 0;
+    int f2[3];
+
+    // int A[K3][K3];
+    int **A = static_cast<int **>(calloc(K3, sizeof(int *)));
+    for (int i = 0; i < K3; i++) {
+        A[i] = static_cast<int *>(calloc(K3, sizeof(int)));
+    }
+
+    for (int i = 0; i < K3; i++) {
+        A[i][i] = 1;
+    }
+
     for (f1[0] = 0; f1[0] < K; f1[0]++) {
         for (f1[1] = 0; f1[1] < K; f1[1]++) {
-            for (f1[2] = 0; f1[2] < K; f1[2]++) { // для каждой линейной функции f1
+            for (f1[2] = 0; f1[2] < K; f1[2]++) {
 
-                // берем 3 точки ki = (x1, x2)
-                int result_points[3];
-                if (test_function(f1, result_points) == 1) {
-                    printf("f1(a[0]: %d, a[1]: %d, a[2]: %d) => { ", f1[0], f1[1], f1[2]);
-                    for (int i = 0; i < 3; i++) {
-                        int point = result_points[i];
-                        int x1 = X1(point), x2 = X2(point);
-                        int y = m[x1][x2];
-                        int y1 = (f1[0] * x1 + f1[1] * x2 + f1[2]) % K;
-                        if (y == y1) {
-                            printf("%d(%d,%d)[%d] ", point, x1, x2, y);
-                        } else {
-                            printf("main: ERROR\n\n\n");
-                            return -1;
+                int i = (f1[0] * K + f1[1]) * K + f1[2];
+
+                for (f2[0] = 0; f2[0] < K; f2[0] ++) {
+                    for (f2[1] = 0; f2[1] < K; f2[1]++) {
+                        for (f2[2] = 0; f2[2] < K; f2[2]++) {
+
+                            int j = (f2[0] * K + f2[1]) * K + f2[2];
+                            if (i == j) {
+                                continue;
+                            }
+
+                            for (int x = 0; x < K2; x++) {
+                                int x1 = X1(x), x2 = X2(x);
+                                int y = m[x1][x2];
+                                int y1 = (f1[0] * x1 + f1[1] * x2 + f1[2]) % K;
+                                int y2 = (f2[0] * x1 + f2[1] * x2 + f2[2]) % K;
+                                if (y1 == y && y2 != y) {
+                                    A[i][j] = 1;
+                                }
+                            }
+
                         }
                     }
-                    printf("}\n");
-                } else {
-                    printf("f1(a[0]: %d, a[1]: %d, a[2]: %d) => FAIL\n", f1[0], f1[1], f1[2]);
-                    fail_count++;
                 }
-
             }
         }
     }
-    printf("fail count: %d\n", fail_count);
+
+    for (int i = 0; i < K3; i++) {
+        for (int j = 0; j < K3; j++) {
+            if (A[i][j] != 1) {
+                f1[0] = i / K / K; f1[1] = (i / K) % K; f1[2] = i % K;
+                f2[0] = j / K / K; f2[1] = (j / K) % K; f2[2] = j % K;
+                printf("FAILED: for functions [%d,%d] f1:{%d * x1 + %d * x2 + %d}, f2: {%d * x1 + %d * x2 + %d}\n", i, j,
+                f1[0], f1[1], f1[2],
+                f2[0], f2[1], f2[2]);
+                break;
+            }
+        }
+    }
     return 0;
 }
 
-int check_f1_fits_points(const int *f1, int k[3]);
+//int main3(int argc, const char * argv[])
+//{
+//    int f1[3] = {0, 0, 5};
+//    int f2[3] = {3, 3, 5};
+//    int k[4] = {11, 23, 24, 26};
+//    int s = 0;
+//    for (int i = 0; i < 4; i++) {
+//        int x1 = X1(k[i]), x2 = X2(k[i]);
+//        int y1 = (f1[0] * x1 + f1[1] * x2 + f1[2]) % K;
+//        int y2= (f2[0] * x1 + f2[1] * x2 + f2[2]) % K;
+//        int y = m[x1][x2];
+//        if (y1 == y && y2 == y) {
+//            s++;
+//        }
+//    }
+//    return 0;
+//}
 
-int test_function(const int f1[3], int k_out[3])
+//// Point count
+//#define P 4
+
+void fulfill_row_with_f1_x1x2(int A[K3], const int *f1, int y, int x1, int x2);
+int test_function(const int f1[3], int k_out[P]);
+
+
+//int main2(int argc, const char * argv[])
+//{
+//    int f1[3] = {0, 0, 5};
+//    int k[P] = {0};
+//    for (k[0] = 0; k[0] < K2; k[0]++) {
+//        for (k[1] = 0; k[1] < K2; k[1]++) {
+//            for(k[2] = 0; k[2] < K2; k[2]++) {
+//                for(k[3] = 0; k[3] < K2; k[3]++) {
+//
+//                    // составляем матрицу A[i,j] == 1 iff fj(ki) != f1(ki) = fu(ki)
+//                    // i = 0,1,2 для k[i]
+//                    // j = пробегаемся по всем функциям не равным f1
+//                    int A[P][K3] = {0};
+//                    int s = 0;
+//                    for (int i = 0; i < P; i++) {
+//                        int x1 = X1(k[i]), x2 = X2(k[i]);
+//                        int y1 = (f1[0] * x1 + f1[1] * x2 + f1[2]) % K;
+//                        int y = m[x1][x2];
+//                        if (y1 == y) {
+//                            s++;
+//                            fulfill_row_with_f1_x1x2(A[i], f1, y, x1, x2);
+//                        }
+//                    }
+//
+//                    if (s > 0) {
+//                        int fits = 1;
+//                        int max = -1;
+//                        int min = 100;
+//                        int min_j = -1;
+//                        for (int j = 0; j < K3; j++) {
+//                            int t = 0;
+//                            for (int l = 0; l < P; l++) {
+//                                t += A[l][j];
+//                            }
+//                            if (t > max) { max = t; }
+//                            if (t < min) { min = t; min_j = j; }
+//                            if (t == 0) {
+//                                fits = 0;
+//                                break;
+//                            }
+//                        }
+//                        if (max >= 4 && k[0] != k[1] && k[1] != k[2] && k[2] != k[3]) {
+//                            std::cout << min_j;
+//                        }
+//                        if (fits == 1) {
+//                            return 0;
+//                        }
+//                    }
+//
+//                }
+//            }
+//        }
+//    }
+//    return 0;
+//}
+//
+//int main1(int argc, const char * argv[])
+//{
+//    int f1[3];
+//    int fail_count = 0;
+//    for (f1[0] = 0; f1[0] < K; f1[0]++) {
+//        for (f1[1] = 0; f1[1] < K; f1[1]++) {
+//            for (f1[2] = 0; f1[2] < K; f1[2]++) { // для каждой линейной функции f1
+//
+//                // берем 3 точки ki = (x1, x2)
+//                int result_points[P];
+//                if (test_function(f1, result_points) == 1) {
+//                    printf("f1(a[0]: %d, a[1]: %d, a[2]: %d) => { ", f1[0], f1[1], f1[2]);
+//                    for (int i = 0; i < P; i++) {
+//                        if (result_points[i] == -1) {
+//                            continue;
+//                        }
+//                        int point = result_points[i];
+//                        int x1 = X1(point), x2 = X2(point);
+//                        int y = m[x1][x2];
+//                        int y1 = (f1[0] * x1 + f1[1] * x2 + f1[2]) % K;
+//                        if (y == y1) {
+//                            printf("%d(%d,%d)[%d] ", point, x1, x2, y);
+//                        } else {
+//                            printf("main: ERROR\n\n\n");
+//                            return -1;
+//                        }
+//                    }
+//                    printf("}\n");
+//                } else {
+//                    printf("f1(a[0]: %d, a[1]: %d, a[2]: %d) => FAIL\n", f1[0], f1[1], f1[2]);
+//                    fail_count++;
+//                }
+//
+//            }
+//        }
+//    }
+//    printf("fail count: %d\n", fail_count);
+//    return 0;
+//}
+
+int check_f1_fits_points(const int *f1, int k[P], int k_used[P]);
+
+int test_function(const int f1[3], int k_out[P])
 {
-    int k[3];
+    int k[P] = {0};
+    int k_used[P] = {-1};
     for (k[0] = 0; k[0] < K2; k[0]++) {
         for (k[1] = 0; k[1] < K2; k[1]++) {
             for(k[2] = 0; k[2] < K2; k[2]++) {
@@ -251,70 +396,106 @@ int test_function(const int f1[3], int k_out[3])
                 // составляем матрицу A[i,j] == 1 iff fj(ki) != f1(ki) = fu(ki)
                 // i = 0,1,2 для k[i]
                 // j = пробегаемся по всем функциям не равным f1
-                int fits = check_f1_fits_points(f1, k);
+                int fits = check_f1_fits_points(f1, k, k_used);
 
                 if (fits == 1) {
-                    k_out[0] = k[0]; k_out[1] = k[1]; k_out[2] = k[2];
+                    for (int i = 0; i < P; i++) {
+                        k_out[i] = (k_used[i] == 1) ? k[i] : -1;
+                    }
                     return 1;
+                }
+
+            }
+        }
+    }
+
+    for (k[0] = 0; k[0] < K2; k[0]++) {
+        for (k[1] = 0; k[1] < K2; k[1]++) {
+            for(k[2] = 0; k[2] < K2; k[2]++) {
+                for (k[3] = 0; k[3] < K2; k[3]++) {
+
+                    // составляем матрицу A[i,j] == 1 iff fj(ki) != f1(ki) = fu(ki)
+                    // i = 0,1,2 для k[i]
+                    // j = пробегаемся по всем функциям не равным f1
+                    int fits = check_f1_fits_points(f1, k, k_used);
+
+                    if (fits == 1) {
+                        for (int i = 0; i < P; i++) {
+                            k_out[i] = (k_used[i] == 1) ? k[i] : -1;
+                        }
+                        return 1;
+                    }
+
                 }
             }
         }
     }
 
+//    for (k[0] = 0; k[0] < K2; k[0]++) {
+//        for (k[1] = 0; k[1] < K2; k[1]++) {
+//            for(k[2] = 0; k[2] < K2; k[2]++) {
+//                for (k[3] = 0; k[3] < K2; k[3]++) {
+//                    for (k[4] = 0; k[4] < K2; k[4]++) {
+//
+//                        // составляем матрицу A[i,j] == 1 iff fj(ki) != f1(ki) = fu(ki)
+//                        // i = 0,1,2 для k[i]
+//                        // j = пробегаемся по всем функциям не равным f1
+//                        int fits = check_f1_fits_points(f1, k, k_used);
+//
+//                        if (fits == 1) {
+//                            for (int i = 0; i < P; i++) {
+//                                k_out[i] = (k_used[i] == 1) ? k[i] : -1;
+//                            }
+//                            return 1;
+//                        }
+//
+//                    }
+//                }
+//            }
+//        }
+//    }
+
     return 0;
 }
 
-#ifdef MINIMIZE_POINT_COUNT
-int check_if_can_finish(const int *A);
-#endif
-
-int check_f1_fits_points(const int *f1, int k[3])
+int check_f1_fits_points(const int *f1, int k[P], int k_used[P])
 {
-    int A[K3] = {0};
+    int A[P][K3] = {0};
     int s = 0;
-    for (int i = 0; i<3; i++) {
+    for (int i = 0; i < P; i++) {
         int x1 = X1(k[i]), x2 = X2(k[i]);
         int y1 = (f1[0] * x1 + f1[1] * x2 + f1[2]) % K;
         int y = m[x1][x2];
         if (y1 == y) {
             s++;
-            fulfill_row_with_f1_x1x2(A, f1, y, x1, x2);
-
-#ifdef MINIMIZE_POINT_COUNT
-            if (check_if_can_finish(A)) {
-                for (int t = i + 1; t < 3; t++) {
-                    k[t] = -1;
-                }
-            }
-#endif
+            fulfill_row_with_f1_x1x2(A[i], f1, y, x1, x2);
         }
     }
 
     if (s > 0) {
         int fits = 1;
         for (int j = 0; j < K3; j++) {
-            if (A[j] != 1) {
+            int t = 0;
+            for (int l=0; l < P; l++) {
+                t += A[l][j];
+            }
+            if (t == 0) {
                 fits = 0;
                 break;
             }
+        }
+
+        for (int l = 0; l < P; l++) {
+            int t = 0;
+            for (int j = 0; j < K3; j++) {
+                t += A[l][j];
+            }
+            k_used[l] = (t >= 2) ? 1 : 0;
         }
         return fits;
     }
     return -1;
 }
-
-#ifdef MINIMIZE_POINT_COUNT
-int check_if_can_finish(const int *A)
-{
-    int j;
-    for (j = 0; j < K3; j++) {
-        if (A[j] != 1) {
-            break;
-        }
-    }
-    return j == K3;
-}
-#endif
 
 void fulfill_row_with_f1_x1x2(int A[K3], const int *f1, int y, int x1, int x2)
 {
