@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EDE261F01CF40729715A454 /* Algorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE29D8DB9CC0F32AD3930E /* Algorithm.cpp */; };
+		1EDE27E22D01B33C9007C5B9 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE2D671CFB0ABC087FD1C5 /* Matrix.cpp */; };
+		1EDE2C6B84C3171B24BD5DB4 /* MatrixGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE28E4A827A83C8AEA48FF /* MatrixGenerator.cpp */; };
 		C430C9061FB450FC004831DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C430C9051FB450FC004831DB /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +26,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1EDE25743DA8B6ABE5CFCF6C /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
+		1EDE27FAF765D8E5CF8877F0 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		1EDE28E4A827A83C8AEA48FF /* MatrixGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixGenerator.cpp; sourceTree = "<group>"; };
+		1EDE29D8DB9CC0F32AD3930E /* Algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Algorithm.cpp; sourceTree = "<group>"; };
+		1EDE2B607F7ADDEE493D0857 /* MatrixGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixGenerator.h; sourceTree = "<group>"; };
+		1EDE2D671CFB0ABC087FD1C5 /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
 		C430C9021FB450FC004831DB /* TestMatrix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestMatrix; sourceTree = BUILT_PRODUCTS_DIR; };
 		C430C9051FB450FC004831DB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 /* End PBXFileReference section */
@@ -58,6 +67,12 @@
 			isa = PBXGroup;
 			children = (
 				C430C9051FB450FC004831DB /* main.cpp */,
+				1EDE29D8DB9CC0F32AD3930E /* Algorithm.cpp */,
+				1EDE25743DA8B6ABE5CFCF6C /* Algorithm.h */,
+				1EDE2D671CFB0ABC087FD1C5 /* Matrix.cpp */,
+				1EDE27FAF765D8E5CF8877F0 /* Matrix.h */,
+				1EDE28E4A827A83C8AEA48FF /* MatrixGenerator.cpp */,
+				1EDE2B607F7ADDEE493D0857 /* MatrixGenerator.h */,
 			);
 			path = TestMatrix;
 			sourceTree = "<group>";
@@ -120,6 +135,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C430C9061FB450FC004831DB /* main.cpp in Sources */,
+				1EDE261F01CF40729715A454 /* Algorithm.cpp in Sources */,
+				1EDE27E22D01B33C9007C5B9 /* Matrix.cpp in Sources */,
+				1EDE2C6B84C3171B24BD5DB4 /* MatrixGenerator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
