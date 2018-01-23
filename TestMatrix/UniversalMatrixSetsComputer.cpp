@@ -3,7 +3,6 @@
 // Copyright (c) 2018 Aziz L. All rights reserved.
 //
 #include <cstdio>
-#include <iostream>
 #include "UniversalMatrixSetsComputer.h"
 
 
@@ -28,20 +27,20 @@ int UniversalMatrixSetsComputer::run() const
                 // берем 3 точки ki = (x1, x2)
                 int result_points[3];
                 if (test_function(f1, result_points) == 1) {
-                    printf("f1(a[0]: %d, a[1]: %d, a[2]: %d) => { ", f1[0], f1[1], f1[2]);
+                    printf("f1(%d*x1 + %d*x2 + %d) => [ ", f1[0], f1[1], f1[2]);
                     for (int i = 0; i < 3; i++) {
                         int point = result_points[i];
                         int x1 = X1(point), x2 = X2(point);
                         int y = m[x1][x2];
                         int y1 = (f1[0] * x1 + f1[1] * x2 + f1[2]) % DIM;
                         if (y == y1) {
-                            printf("%d(%d,%d)[%d] ", point, x1, x2, y);
+                            printf("%d, ", point);
                         } else {
                             printf("main: ERROR\n\n\n");
                             return -1;
                         }
                     }
-                    printf("}\n");
+                    printf("]\n");
                 } else {
                     printf("f1(a[0]: %d, a[1]: %d, a[2]: %d) => FAIL\n", f1[0], f1[1], f1[2]);
                     fail_count++;
@@ -89,9 +88,6 @@ int UniversalMatrixSetsComputer::check_f1_fits_points(const int *f1, int k[], in
             s++;
             fulfill_row_with_f1_x1x2(A, f1, y, x1, x2);
         }
-//        else {
-//            k[i] = -1; // FIXME
-//        }
     }
 
     if (s > 0) {
