@@ -27,17 +27,22 @@ int main(int argc, const char *argv[])
         { 2, 4, 5, 2, 4, 5, },
     };
 
-//    const int N = 2;
-//    const int M = 3;
-//    int **A;
-//    A = static_cast<int **>(calloc(N, sizeof(int *)));
-//    for (int i = 0; i < N; ++i) {
-//        A[i] = static_cast<int *>(calloc(M, sizeof(int)));
-//    }
-//
-//    A[1][1] = 1;
-//
-//    printf("A[1][1] = %d\n", A[1][1]);
+    const int N = 2;
+    const int M = 3;
+    int **A;
+    A = static_cast<int **>(calloc(N, sizeof(int *)));
+    for (int i = 0; i < N; ++i) {
+        A[i] = static_cast<int *>(calloc(M, sizeof(int)));
+    }
+
+    A[1][1] = 1;
+
+    printf("A[1][1] = %d\n", A[1][1]);
+
+    for (int i = 0; i < N; ++i) {
+        free(A[i]);
+    }
+    free(A);
 
 //    MatrixGenerator matrixGenerator;
 //    Algorithm algorithm;
