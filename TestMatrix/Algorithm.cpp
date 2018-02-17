@@ -34,7 +34,7 @@ int Algorithm::gradientSearchWithInitialMatrix(Matrix initialMatrix, const int K
         }
     }
 
-    Utils::printMatrixWithQuality(bestQuality, currentMatrix, K);
+//    Utils::printMatrixWithQuality(bestQuality, currentMatrix, K);
     return bestQuality;
 }
 
@@ -94,9 +94,9 @@ int Algorithm::matrixUniversalityQuality(Matrix m, const int K) const
 
                 f1[0] = i / K / K; f1[1] = (i / K) % K; f1[2] = i % K;
                 f2[0] = j / K / K; f2[1] = (j / K) % K; f2[2] = j % K;
-                printf("FAILED: for functions [%d,%d] f1:{%d * x1 + %d * x2 + %d}, f2: {%d * x1 + %d * x2 + %d}\n", i, j,
-                    f1[0], f1[1], f1[2],
-                    f2[0], f2[1], f2[2]);
+//                printf("FAILED: for functions [%d,%d] f1:{%d * x1 + %d * x2 + %d}, f2: {%d * x1 + %d * x2 + %d}\n", i, j,
+//                    f1[0], f1[1], f1[2],
+//                    f2[0], f2[1], f2[2]);
 
                 failedCount++;
 
