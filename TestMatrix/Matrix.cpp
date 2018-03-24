@@ -6,6 +6,17 @@
 #include <cstdio>
 #include "Matrix.h"
 
+bool Utils::isMatrixEqual(Matrix m1, Matrix m2, const int K)
+{
+    for(int i = 0; i < K; i++) {
+        for(int j = 0; j < K; j++) {
+            if (m1[i][j] != m2[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
 void Utils::copyMatrix(Matrix src, Matrix dst, const int K)
 {

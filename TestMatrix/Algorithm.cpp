@@ -7,38 +7,63 @@
 #include "Algorithm.h"
 
 
-#define PRINT_FAILING
+#define xPRINT_FAILING
 
 
-int Algorithm::gradientSearchWithInitialMatrix(Matrix initialMatrix, const int K) const
+bool Algorithm::shouldApplyAlgorithm(Matrix m, const int K) const
 {
-    const int K1 = K - 1;
-
-    int currentMatrix[DIM][DIM];
-    Utils::copyMatrix(initialMatrix, currentMatrix, K);
-
-    int bestQuality = matrixUniversalityQuality(reinterpret_cast<Matrix>(currentMatrix), DIM);
-
-    for (int i = 0; i < K; i++) {
-        for (int j = 0; j < K; j++) {
-
-            int bestValue = currentMatrix[i][j];
-            for (int s = -1; s < K1; s++) {
-                currentMatrix[i][j] = s;
-
-                int quality = matrixUniversalityQuality(reinterpret_cast<Matrix>(currentMatrix), DIM);
-                if (quality < bestQuality) {
-                    bestQuality = quality;
-                    bestValue = currentMatrix[i][j];
-                }
+    int values[DIM] = {0};
+    int i, j, count;
+    for (i = 0; i < K; i++) {
+        for (j = 0; j < K; j++) {
+            if (m[i][j] >= 0) {
+                values[m[i][j]] += 1;
             }
-            currentMatrix[i][j] = bestValue;
-
         }
     }
 
-//    Utils::printMatrixWithQuality(bestQuality, currentMatrix, K);
-    return bestQuality;
+    count = 0;
+    for (i = 0; i < DIM; i++) {
+        count += MIN(values[i], N);
+    }
+    return count >= N * K;
+}
+
+bool Algorithm::shouldFinalizeAlgorithm(Matrix m, const int K) const
+{
+    int i,j, count = 0;
+    for (i = 0; i < K; i++) {
+        for (j = 0; j < K; j++) {
+            if (m[i][j] + 1 == K) {
+                count++;
+            }
+        }
+    }
+    return count >= K * K;
+}
+
+void Algorithm::incMatrix(Matrix m, const int K) const
+{
+    int i = 0, j = 0;
+    do {
+        if (m[i][j] <= 0) {
+            m[i][j] = 1;
+            return;
+        }
+
+        if (m[i][j] + 1 < K) {
+            m[i][j] += 1;
+            return;
+        }
+
+        m[i][j] = 0;
+        if (j + 1 == K) {
+            i = (i + 1) % K;
+            j = 0;
+        } else {
+            j++;
+        }
+    } while (1);
 }
 
 int Algorithm::matrixUniversalityQuality(Matrix m, const int K) const

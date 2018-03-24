@@ -4,13 +4,19 @@
 //
 
 #pragma once
-
-
 #include "Matrix.h"
+
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+
+const int N = 2+1;
+const int K = DIM;
 
 
 struct Algorithm
 {
-    int gradientSearchWithInitialMatrix(Matrix initialMatrix, const int K) const;
+    bool shouldApplyAlgorithm(Matrix m, const int K) const;
+    bool shouldFinalizeAlgorithm(Matrix m, const int K) const;
+    void incMatrix(Matrix m, const int K) const;
+
     int matrixUniversalityQuality(Matrix m, const int K) const;
 };

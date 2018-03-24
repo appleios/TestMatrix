@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EDE2202755A25982A2A00E8 /* AlgorithmTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE28CCFBAD7BF02AC6286F /* AlgorithmTests.cpp */; };
 		1EDE261F01CF40729715A454 /* Algorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE29D8DB9CC0F32AD3930E /* Algorithm.cpp */; };
 		1EDE27E22D01B33C9007C5B9 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE2D671CFB0ABC087FD1C5 /* Matrix.cpp */; };
 		C430C9061FB450FC004831DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C430C9051FB450FC004831DB /* main.cpp */; };
@@ -27,9 +28,11 @@
 /* Begin PBXFileReference section */
 		1EDE25743DA8B6ABE5CFCF6C /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		1EDE27FAF765D8E5CF8877F0 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		1EDE28CCFBAD7BF02AC6286F /* AlgorithmTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlgorithmTests.cpp; sourceTree = "<group>"; };
 		1EDE29D8DB9CC0F32AD3930E /* Algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Algorithm.cpp; sourceTree = "<group>"; };
 		1EDE2A3FCD370CE51525D1B3 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 		1EDE2D671CFB0ABC087FD1C5 /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
+		1EDE2E0E183F6476A09BF01D /* AlgorithmTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgorithmTests.h; sourceTree = "<group>"; };
 		C430C9021FB450FC004831DB /* TestMatrix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestMatrix; sourceTree = BUILT_PRODUCTS_DIR; };
 		C430C9051FB450FC004831DB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 /* End PBXFileReference section */
@@ -70,6 +73,8 @@
 				1EDE2D671CFB0ABC087FD1C5 /* Matrix.cpp */,
 				1EDE27FAF765D8E5CF8877F0 /* Matrix.h */,
 				1EDE2A3FCD370CE51525D1B3 /* test.txt */,
+				1EDE28CCFBAD7BF02AC6286F /* AlgorithmTests.cpp */,
+				1EDE2E0E183F6476A09BF01D /* AlgorithmTests.h */,
 			);
 			path = TestMatrix;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 				C430C9061FB450FC004831DB /* main.cpp in Sources */,
 				1EDE261F01CF40729715A454 /* Algorithm.cpp in Sources */,
 				1EDE27E22D01B33C9007C5B9 /* Matrix.cpp in Sources */,
+				1EDE2202755A25982A2A00E8 /* AlgorithmTests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
