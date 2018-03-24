@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1EDE215AE16AC3807E9834C6 /* UniversalMatrixSetsComputer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE238A107EC6533C8DB9E0 /* UniversalMatrixSetsComputer.cpp */; };
-		1EDE24CD759144C06A656FA8 /* UniversalMatrixSetsComputerCustom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE2A746AEE1076285FCBF4 /* UniversalMatrixSetsComputerCustom.cpp */; };
 		1EDE261F01CF40729715A454 /* Algorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE29D8DB9CC0F32AD3930E /* Algorithm.cpp */; };
 		1EDE27E22D01B33C9007C5B9 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE2D671CFB0ABC087FD1C5 /* Matrix.cpp */; };
-		1EDE2C6B84C3171B24BD5DB4 /* MatrixGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE28E4A827A83C8AEA48FF /* MatrixGenerator.cpp */; };
 		C430C9061FB450FC004831DB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C430C9051FB450FC004831DB /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -28,16 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1EDE214DA4D4AF226B02DCBE /* UniversalMatrixSetsComputer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversalMatrixSetsComputer.h; sourceTree = "<group>"; };
-		1EDE238A107EC6533C8DB9E0 /* UniversalMatrixSetsComputer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UniversalMatrixSetsComputer.cpp; sourceTree = "<group>"; };
 		1EDE25743DA8B6ABE5CFCF6C /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		1EDE27FAF765D8E5CF8877F0 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
-		1EDE28E4A827A83C8AEA48FF /* MatrixGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixGenerator.cpp; sourceTree = "<group>"; };
 		1EDE29D8DB9CC0F32AD3930E /* Algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Algorithm.cpp; sourceTree = "<group>"; };
 		1EDE2A3FCD370CE51525D1B3 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
-		1EDE2A746AEE1076285FCBF4 /* UniversalMatrixSetsComputerCustom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UniversalMatrixSetsComputerCustom.cpp; sourceTree = "<group>"; };
-		1EDE2B607F7ADDEE493D0857 /* MatrixGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixGenerator.h; sourceTree = "<group>"; };
-		1EDE2CD5F4193CB2E18F3122 /* UniversalMatrixSetsComputerCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversalMatrixSetsComputerCustom.h; sourceTree = "<group>"; };
 		1EDE2D671CFB0ABC087FD1C5 /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix.cpp; sourceTree = "<group>"; };
 		C430C9021FB450FC004831DB /* TestMatrix */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestMatrix; sourceTree = BUILT_PRODUCTS_DIR; };
 		C430C9051FB450FC004831DB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
@@ -78,12 +69,6 @@
 				1EDE25743DA8B6ABE5CFCF6C /* Algorithm.h */,
 				1EDE2D671CFB0ABC087FD1C5 /* Matrix.cpp */,
 				1EDE27FAF765D8E5CF8877F0 /* Matrix.h */,
-				1EDE28E4A827A83C8AEA48FF /* MatrixGenerator.cpp */,
-				1EDE2B607F7ADDEE493D0857 /* MatrixGenerator.h */,
-				1EDE238A107EC6533C8DB9E0 /* UniversalMatrixSetsComputer.cpp */,
-				1EDE214DA4D4AF226B02DCBE /* UniversalMatrixSetsComputer.h */,
-				1EDE2A746AEE1076285FCBF4 /* UniversalMatrixSetsComputerCustom.cpp */,
-				1EDE2CD5F4193CB2E18F3122 /* UniversalMatrixSetsComputerCustom.h */,
 				1EDE2A3FCD370CE51525D1B3 /* test.txt */,
 			);
 			path = TestMatrix;
@@ -149,9 +134,6 @@
 				C430C9061FB450FC004831DB /* main.cpp in Sources */,
 				1EDE261F01CF40729715A454 /* Algorithm.cpp in Sources */,
 				1EDE27E22D01B33C9007C5B9 /* Matrix.cpp in Sources */,
-				1EDE2C6B84C3171B24BD5DB4 /* MatrixGenerator.cpp in Sources */,
-				1EDE215AE16AC3807E9834C6 /* UniversalMatrixSetsComputer.cpp in Sources */,
-				1EDE24CD759144C06A656FA8 /* UniversalMatrixSetsComputerCustom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
