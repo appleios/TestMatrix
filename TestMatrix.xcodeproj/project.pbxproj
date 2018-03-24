@@ -34,6 +34,7 @@
 		1EDE27FAF765D8E5CF8877F0 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
 		1EDE28E4A827A83C8AEA48FF /* MatrixGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MatrixGenerator.cpp; sourceTree = "<group>"; };
 		1EDE29D8DB9CC0F32AD3930E /* Algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Algorithm.cpp; sourceTree = "<group>"; };
+		1EDE2A3FCD370CE51525D1B3 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 		1EDE2A746AEE1076285FCBF4 /* UniversalMatrixSetsComputerCustom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UniversalMatrixSetsComputerCustom.cpp; sourceTree = "<group>"; };
 		1EDE2B607F7ADDEE493D0857 /* MatrixGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixGenerator.h; sourceTree = "<group>"; };
 		1EDE2CD5F4193CB2E18F3122 /* UniversalMatrixSetsComputerCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversalMatrixSetsComputerCustom.h; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 				1EDE214DA4D4AF226B02DCBE /* UniversalMatrixSetsComputer.h */,
 				1EDE2A746AEE1076285FCBF4 /* UniversalMatrixSetsComputerCustom.cpp */,
 				1EDE2CD5F4193CB2E18F3122 /* UniversalMatrixSetsComputerCustom.h */,
+				1EDE2A3FCD370CE51525D1B3 /* test.txt */,
 			);
 			path = TestMatrix;
 			sourceTree = "<group>";

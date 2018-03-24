@@ -11,5 +11,6 @@
 
 struct UniversalMatrixSetsComputerCustom : public UniversalMatrixSetsComputer
 {
+
     int test_function2(const int f1[3]) const;
 };

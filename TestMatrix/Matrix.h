@@ -6,7 +6,7 @@
 #pragma once
 
 
-#define DIM 16
+#define DIM 18
 
 typedef int (*Matrix)[DIM];
 
