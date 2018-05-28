@@ -24,10 +24,14 @@ int main(int argc, const char *argv[])
     int tryCount = 0;
 
     int m[DIM][DIM] = {
-        { 3, 1, 0, 2, },
-        { 0, 3, 2, 1, },
-        { 0, 3, 3, 0, },
-        { 1, 2, 3, 0, },
+        { 0, 0, 1, 3, },
+        { 0, 3, 1, 2, },
+        { 1, 1, 0, 0, },
+        { 3, 2, 0, 0, },
+    };
+
+    SubMatrix subMatrix = {
+        .rowMin = 2, .rowMax = 3, .colMin = 2, .colMax = 3
     };
 
     while (!algorithm.shouldFinalizeAlgorithm(m, K)) {
@@ -40,7 +44,8 @@ int main(int argc, const char *argv[])
                 printf("iteration: %d, quality: %d, bestQuality: %d\n", tryCount, quality, bestQuality);
             }
         }
-        algorithm.incMatrix(m, K);
+        algorithm.incSubMatrix(m, subMatrix, K);
+        //Utils::printMatrixWithQuality(-1, m, K);
     }
 
     return 0;

@@ -14,6 +14,7 @@ void AlgorithmTests::test() const
 {
     testInc1();
     testInc2();
+    testSubMatrixInc();
 }
 
 void AlgorithmTests::testInc1() const
@@ -52,6 +53,30 @@ void AlgorithmTests::testInc2() const
         { 0, 0, 1, -1 },
         { 0, 0, 0, 0 },
         { 0, 0, 0, 0 },
+        { 0, 0, 0, 0 },
+    };
+
+    assert(Utils::isMatrixEqual(m1, m2, K));
+}
+
+void AlgorithmTests::testSubMatrixInc() const
+{
+    int m1[DIM][DIM] = {
+        { 0, 0, 1, -1 },
+        { 0, 0, 0, 0 },
+        { 0, 0, K-1, 0 },
+        { 0, 0, 0, 0 },
+    };
+
+    SubMatrix subMatrix = {
+        .rowMin = 2, .rowMax = 3, .colMin = 2, .colMax = 3
+    };
+    algorithm.incSubMatrix(m1, subMatrix, K);
+
+    int m2[DIM][DIM] = {
+        { 0, 0, 1, -1 },
+        { 0, 0, 0, 0 },
+        { 0, 0, 0, 1 },
         { 0, 0, 0, 0 },
     };
 

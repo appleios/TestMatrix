@@ -7,7 +7,7 @@
 #include "Algorithm.h"
 
 
-#define PRINT_FAILING
+#define xPRINT_FAILING
 
 
 bool Algorithm::shouldApplyAlgorithm(Matrix m, const int K) const
@@ -60,6 +60,30 @@ void Algorithm::incMatrix(Matrix m, const int K) const
         if (j + 1 == K) {
             i = (i + 1) % K;
             j = 0;
+        } else {
+            j++;
+        }
+    } while (1);
+}
+
+void Algorithm::incSubMatrix(Matrix m, SubMatrix &subMatrix, const int K) const
+{
+    int i = subMatrix.rowMin, j = subMatrix.colMin;
+    do {
+        if (m[i][j] <= 0) {
+            m[i][j] = 1;
+            return;
+        }
+
+        if (m[i][j] + 1 < K) {
+            m[i][j] += 1;
+            return;
+        }
+
+        m[i][j] = 0;
+        if (j == subMatrix.colMax) {
+            i = subMatrix.rowMin + ((i + 1) % (1 + subMatrix.rowMax - subMatrix.rowMin));
+            j = subMatrix.colMin;
         } else {
             j++;
         }

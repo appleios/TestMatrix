@@ -19,4 +19,6 @@ public:
     void testInc1() const;
 
     void testInc2() const;
+
+    void testSubMatrixInc() const;
 };
