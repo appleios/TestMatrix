@@ -7,7 +7,7 @@
 #include "Algorithm.h"
 
 
-#define xPRINT_FAILING
+#define PRINT_FAILING
 
 
 bool Algorithm::shouldApplyAlgorithm(Matrix m, const int K) const

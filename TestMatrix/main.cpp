@@ -26,15 +26,17 @@ int main(int argc, const char *argv[])
     int m[DIM][DIM] = {
         { 0, 0, 1, 3, },
         { 0, 3, 1, 2, },
-        { 1, 1, 0, 0, },
-        { 3, 2, 0, 0, },
+        { 1, 1, 2, 2, },
+        { 3, 2, 2, 1, },
     };
 
     SubMatrix subMatrix = {
         .rowMin = 2, .rowMax = 3, .colMin = 2, .colMax = 3
     };
 
-    while (!algorithm.shouldFinalizeAlgorithm(m, K)) {
+
+    const int K4 = K*K*K*K;
+    while (!algorithm.shouldFinalizeAlgorithm(m, K) && tryCount <= K4) {
         if (algorithm.shouldApplyAlgorithm(m, K)) {
             tryCount++;
             quality = algorithm.matrixUniversalityQuality(reinterpret_cast<Matrix>(m), DIM);
